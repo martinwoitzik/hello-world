@@ -4,5 +4,8 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Meine kleine Welt App' });
+  res.render('index', {
+      title: 'Meine kleine Welt App',
+      listOfNumbers: ['zwei', 'eins', 'vier', 'drei']
+  });
 };
