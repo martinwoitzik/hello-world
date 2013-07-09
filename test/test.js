@@ -40,17 +40,19 @@ describe('WD', function(){
             browser.get("http://hello-world-app.herokuapp.com/", function() {
                 browser.title(function(err, title) {
                     assert.ok(~title.indexOf('Meine kleine Welt App'), 'Wrong title!');
-
-                    /*
-                     browser.elementById('submit', function(err, el) {
-                     browser.clickElement(el, function() {
-                     browser.eval("window.location.href", function(err, href) {
-                     assert.ok(~href.indexOf('login'), 'Wrong URL!');
-                     browser.quit()
-                     })
-                     })
-                     })
-                     */
+/*
+                    browser.elementById('inp_username', function(err, el) {
+                        browser.fill
+                    });
+*/
+                    browser.elementById('btn_submit', function(err, el) {
+                        browser.clickElement(el, function(){
+                            browser.eval("window.location.href", function(err, href) {
+                                assert.ok(~href.indexOf('login'), 'Wrong URL!');
+                                browser.quit()
+                            });
+                        });
+                    });
 
                     browser.quit();
 
