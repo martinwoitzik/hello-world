@@ -1,4 +1,9 @@
 doctype 5
+
+mixin list(entries)
+    each entry, i in entries
+        li #{entry} #{i}
+
 html
   head
     title= title
