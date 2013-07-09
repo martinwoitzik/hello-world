@@ -1,7 +1,4 @@
-if (typeof define !== 'function') { var define = require('amdefine')(module) }
-define(function () {
-
-    var actions = {
+module.exports = {
 
         validate: function(username, password) {
             var result = false;
@@ -10,8 +7,5 @@ define(function () {
             }
             return result;
         }
-    };
 
-    return actions;
-
-});
+}
