@@ -4,7 +4,8 @@
  */
 
 exports.login = function(req, res){
-  res.render('login', {
-      username: req.param('name')
+  res.render('login/index', {
+      username: req.param('name'),
+      password: req.param('password')
   });
 };
