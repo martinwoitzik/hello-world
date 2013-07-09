@@ -2,7 +2,11 @@ doctype 5
 
 mixin list(entries)
     each entry, i in entries
-        li #{entry} #{i}
+        li #{entry.date}:
+            br
+            span #{entry.content}
+            br
+            br
 
 html
   head
@@ -10,5 +14,4 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block header
-      p header
     block content
