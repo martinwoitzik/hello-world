@@ -44,15 +44,19 @@ app.get('/login', login.login);
 app.get('/user', user.list);
 
 
-// Error 404 handler
+// error 404 route
 app.get('/404', function(req, res) {
 //    res.status(404);
     res.render('error-pages/404', 404);
 });
-// Error 500 handler
+// error 500 route
 app.get('/500', function(req, res) {
     res.status(500);
     res.render('error-pages/500', {errorCode:500});
+});
+// automatic 404 error-handler
+app.use(function(req, res, next){
+    res.render('error-pages/404', 404);
 });
 // global error handler
 app.use(function(err, req, res, next){
