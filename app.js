@@ -47,7 +47,7 @@ app.get('/user', user.list);
 
 app.get('/force-error', function(req, res) {
 //    res.download('sldkfjslkdfj');
-    res.render('force-error');
+    res.render('the-unknown-view');
 });
 
 
