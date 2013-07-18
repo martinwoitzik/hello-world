@@ -45,8 +45,9 @@ app.get('/news/:id', news.show)
 app.get('/login', login.login);
 app.get('/user', user.list);
 
-app.get('/force', function(req, res) {
-    res.render(null);
+app.get('/force-error', function(req, res) {
+//    res.download('sldkfjslkdfj');
+    res.render('force-error');
 });
 
 
@@ -58,7 +59,7 @@ app.get('/404', function(req, res) {
 // error 500 route
 app.get('/500', function(req, res) {
     res.status(500);
-    res.render('error-pages/500', {errorCode:500});
+    res.render('error-pages/500', {error:encodeURI('Error code: 500')});
 });
 // automatic 404 error-handler
 app.use(function(req, res, next){
@@ -68,7 +69,7 @@ app.use(function(req, res, next){
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.status(500);
-    res.render('error-pages/500', {errorCode:encodeURI(err)});
+    res.render('error-pages/500', {error:encodeURI(err)});
 });
 
 
