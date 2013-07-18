@@ -46,6 +46,7 @@ app.get('/user', user.list);
 // Error-Handling for Express-Apps
 // Error 404 handler
 app.get('*', function(req, res) {
+//    res.status(404);
     res.render('error-pages/404', 404);
 });
 // Error 500 handler
