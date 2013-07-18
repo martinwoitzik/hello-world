@@ -43,13 +43,18 @@ app.get('/news/:id', news.show)
 app.get('/login', login.login);
 app.get('/user', user.list);
 
-// Error-Handling for Express-Apps
+
 // Error 404 handler
-app.get('*', function(req, res) {
+app.get('/404', function(req, res) {
 //    res.status(404);
     res.render('error-pages/404', 404);
 });
 // Error 500 handler
+app.get('/500', function(req, res) {
+    res.status(500);
+    res.render('error-pages/500', {errorCode:500});
+});
+// global error handler
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.status(500);
