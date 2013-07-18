@@ -33,15 +33,21 @@ app.use(less({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
+/*
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+*/
 
 app.get('/', routes.index);
 app.get('/news', news.index);
 app.get('/news/:id', news.show)
 app.get('/login', login.login);
 app.get('/user', user.list);
+
+app.get('/force', function(req, res) {
+    res.render(null);
+});
 
 
 // error 404 route
@@ -62,7 +68,7 @@ app.use(function(req, res, next){
 app.use(function(err, req, res, next){
     console.error(err.stack);
     res.status(500);
-    res.render('error-pages/500', {errorCode:err.status});
+    res.render('error-pages/500', {errorCode:encodeURI(err)});
 });
 
 
