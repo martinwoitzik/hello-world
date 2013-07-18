@@ -43,6 +43,11 @@ app.get('/news/:id', news.show)
 app.get('/login', login.login);
 app.get('/user', user.list);
 
+app.get('*', function(req, res) {
+   res.render('error-pages/404', 404);
+});
+
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
