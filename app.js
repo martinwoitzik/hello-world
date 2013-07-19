@@ -15,9 +15,23 @@ var app = express();
 
 var less = require('less-middleware');
 
+/**
+ *  i18n CONFIGURATION
+ */
 var i18n = require("i18next");
+i18n.init({
+    defaultLocale: 'en',
+    lng:'en',
+    supportedLngs: ['en', 'de'],
+    fallbackLng: 'en',
+    resSetPath: 'locales/__lng__/translation.json',
+    saveMissing: true,
+    detectLngFromPath: 0
+});
 
-// all environments
+/**
+ *  ALL ENVIRONMENTS
+ */
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -35,34 +49,23 @@ app.use(less({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-i18n.init({
-    lng:'en',
-    supportedLngs: ['en', 'de'],
-    fallbackLng: 'en',
-    resSetPath: 'locales/__lng__/translation.json',
-    saveMissing: true,
-    detectLngFromPath: 0
-});
 
-// development only
-/*
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
-*/
-
+/**
+ *  PAGE ROUTES
+ */
 app.get('/', routes.index);
 app.get('/news', news.index);
 app.get('/news/:id', news.show)
 app.get('/login', login.login);
 app.get('/user', user.list);
-
 app.get('/force-error', function(req, res) {
 //    res.download('sldkfjslkdfj');
     res.render('the-unknown-view');
 });
 
-
+/**
+ *  ERROR ROUTES
+ */
 // error 404 route
 app.get('/404', function(req, res) {
 //    res.status(404);
@@ -85,6 +88,9 @@ app.use(function(err, req, res, next){
 });
 
 
+/**
+ *  i18n HANDLERS (MUST STAY AT THE END OF FILE)
+ */
 i18n.registerAppHelper(app)
     .serveClientScript(app)
     .serveDynamicResources(app)

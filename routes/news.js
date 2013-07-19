@@ -9,6 +9,8 @@ var entries = [
 ];
 
 exports.index = function(req, res){
+  var i = req.i18n;
+  var title = i.t('app.title');
   res.render('news/index', {
       entries:entries
   });
