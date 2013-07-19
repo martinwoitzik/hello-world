@@ -36,11 +36,13 @@ app.use(less({
 app.use(express.static(path.join(__dirname, 'public')));
 
 i18n.init({
-    fallbackLng: 'de',
+    supportedLngs: ['en', 'de'],
+    lng:'en',
+    fallbackLng: 'en',
     resSetPath: 'locales/__lng__/translation.json',
-    saveMissing: true
+    saveMissing: true,
+    detectLngFromPath: 0
 });
-i18n.registerAppHelper(app);
 
 // development only
 /*
@@ -82,6 +84,13 @@ app.use(function(err, req, res, next){
     res.render('error-pages/500', {error:encodeURI(err)});
 });
 
+
+i18n.registerAppHelper(app)
+    .serveClientScript(app)
+    .serveDynamicResources(app)
+    .serveMissingKeyRoute(app)
+    .serveChangeKeyRoute(app)
+    .serveRemoveKeyRoute(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
