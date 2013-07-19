@@ -9,7 +9,8 @@
     "express": "3.3.3",
     "jade": "*",
     "less-middleware": "*",
-    "amdefine": ">=0.0.5"
+    "amdefine": ">=0.0.5",
+    "i18next": "~1.6.3"
   },
   "engines": {
     "node": "0.10.x",
