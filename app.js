@@ -15,6 +15,8 @@ var app = express();
 
 var less = require('less-middleware');
 
+var i18n = require("i18next");
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -23,6 +25,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(i18n.handle);
 app.use(app.router);
 app.use(less({
     src: __dirname + '/private',
@@ -31,6 +34,13 @@ app.use(less({
     compress: false
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+i18n.init({
+    fallbackLng: 'de',
+    resSetPath: 'locales/__lng__/translation.json',
+    saveMissing: true
+});
+i18n.registerAppHelper(app);
 
 // development only
 /*
