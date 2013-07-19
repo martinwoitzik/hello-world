@@ -4,8 +4,11 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', {
-      title: 'Meine kleine Welt App',
-      showHeader: true
-  });
+
+    var i = req.i18n;
+
+    res.render('index', {
+        title: i.t('app.title'),
+        showHeader: true
+    });
 };

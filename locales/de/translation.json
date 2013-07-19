@@ -1,6 +1,7 @@
 {
     "app": {
-        "name": "Hallo Welt"
+        "name": "Hallo Welt",
+        "title": "Meine kleine Welt-App"
     },
     "nav": {
         "home": "Startseite",

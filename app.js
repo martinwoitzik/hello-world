@@ -36,8 +36,8 @@ app.use(less({
 app.use(express.static(path.join(__dirname, 'public')));
 
 i18n.init({
-    supportedLngs: ['en', 'de'],
     lng:'en',
+    supportedLngs: ['en', 'de'],
     fallbackLng: 'en',
     resSetPath: 'locales/__lng__/translation.json',
     saveMissing: true,
