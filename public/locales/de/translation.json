@@ -1,0 +1,10 @@
+{
+    "app": {
+        "name": "Hallo Welt"
+    },
+    "nav": {
+        "home": "Startseite",
+        "page1": "Seite 1",
+        "page2": "Seite 2"
+    }
+}

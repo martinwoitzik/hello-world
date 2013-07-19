@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 
-var Login = require("../public/js/Login");
+var Login = require("../public/js/web/Login");
 
 describe('Login', function(){
 
