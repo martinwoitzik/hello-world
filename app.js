@@ -41,12 +41,16 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(i18n.handle);
 app.use(app.router);
-app.use(less({
-    src: __dirname + '/private',
-    dest: __dirname + '/public/stylesheets',
-    prefix: '/stylesheets',
-    compress: false
-}));
+app.use(less(
+    path.join(__dirname, '/private'), {
+        dest: path.join(__dirname, '/public/stylesheets'),
+        preprocess: {
+            path: function(pathname, req) {
+                return pathname.replace('/stylesheets/', '/');
+            }
+        }
+    }
+));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
