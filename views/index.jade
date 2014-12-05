@@ -3,23 +3,20 @@ extends layout
 block header
     - if (showHeader)
         h1 Header Block #{showHeader}
-        p Blablablabla Hello world
         a(href='/news') Aktuelles
 
 block content
   h1= t('nav.home')
   p Welcome to #{title}
-  p App mit Express, Jade, Node, Less und Heroku
   br
   p current language: #{i18n.lng()}
 
-  h2 Login
-
-  form(id='form1', method='get', action='/login')
-    input(type='text', name='name', value='')#inp_name
-    br
-    input(type='password', name='password', value='')#inp_password
-    br
-    input(type='submit', value='Abschicken')#btn_submit
+  //h2 Login
+  //form(id='form1', method='get', action='/login')
+  //  input(type='text', name='name', value='')#inp_name
+  //  br
+  //  input(type='password', name='password', value='')#inp_password
+  //  br
+  //  input(type='submit', value='Abschicken')#btn_submit
 
 
